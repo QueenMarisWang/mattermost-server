@@ -11,10 +11,7 @@ func TestTestLdap(t *testing.T) {
 	th := Setup().InitBasic()
 	defer th.TearDown()
 
-	_, resp := th.Client.TestLdap()
-	CheckForbiddenStatus(t, resp)
-
-	_, resp = th.SystemAdminClient.TestLdap()
+	_, resp := th.SystemAdminClient.TestLdap()
 	CheckNotImplementedStatus(t, resp)
 }
 
@@ -23,10 +20,7 @@ func TestSyncLdap(t *testing.T) {
 	defer th.TearDown()
 
 	_, resp := th.SystemAdminClient.SyncLdap()
-	CheckNoError(t, resp)
-
-	_, resp = th.Client.SyncLdap()
-	CheckForbiddenStatus(t, resp)
+	CheckNotImplementedStatus(t, resp)
 }
 
 func TestGetLdapGroups(t *testing.T) {
